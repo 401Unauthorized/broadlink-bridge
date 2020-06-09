@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+const { error } = require('dotenv').config();
+
+if (error) throw error;
+
+const { resolve } = require('path');
+global.appRoot = resolve(__dirname, '..');
+
+const { program } = require('commander');
+const { version } = require('../package');
+
+program.version(version);
+
+program
+    .command('start')
+    .description('Start Broadlink-Bridge Server')
+    .option('-p, --port <number>', 'Port', process.env.PORT)
+    .option('-t, --tokens <items>', 'Comma Separated List of API Tokens (No Spaces)', process.env.TOKENS)
+    .action((cmd) => {
+        const { port, tokens } = cmd.opts();
+        process.env.PORT = port;
+        process.env.TOKENS = tokens;
+        const { startHTTPServer } = require('../express/www');
+        const app = require('../express/app');
+        startHTTPServer(app);
+    });
+
+program
+    .command('connect')
+    .description('Connect a BroadLink Blaster to WIFI')
+    .requiredOption('-w, --wifi <string>', 'WIFI Name')
+    .requiredOption('-p, --password <string>', 'WIFI Password')
+    .requiredOption('-s, --security <number>', 'WIFI Security ( 0 = none (open), 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2 )')
+    .action((cmd) => {
+        const { wifi, password, security } = cmd.opts();
+        const BroadlinkJS = require('broadlinkjs-rm');
+        const broadlink = new BroadlinkJS();
+        broadlink.connect(wifi, password, security);
+        console.log(`Attempting to connect to ${wifi}!`);
+    });
+
+program
+    .command('files')
+    .description('Prints All Important File Paths')
+    .action(() => {
+        const response = {
+            'db.json': resolve('models/lowdb/db.json'),
+            'db-example.json': resolve('models/lowdb/db-example.json'),
+            '.env': resolve('.env'),
+            'postman-bearer-token': resolve('config/broadlink-bridge_bearer_auth.postman_collection.json'),
+            'postman-query-string': resolve('config/broadlink-bridge_query_string_auth.postman_collection.json')
+        };
+        console.log(JSON.stringify(response, null, ' '));
+    });
+
+program.parse(process.argv);

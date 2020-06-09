@@ -1,0 +1,774 @@
+{
+	"info": {
+		"_postman_id": "fb3e0061-cdd9-4f1f-a5e2-f955f1702ae9",
+		"name": "broadlink-bridge (Bearer Auth)",
+		"description": "Broadlink Bridge\nhttps://github.com/401unauthorized/broadlink-bridge\n\nCopyright 2020 Stephen Mendez\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generic",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/health/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"health",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/version/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"version",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/stats/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"stats",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e13c804e-d154-4eac-b87e-0784ece68be0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "623583e5-1e29-469f-83aa-af08f43b34fc",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Blasters",
+			"item": [
+				{
+					"name": "Read Blasters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Blaster",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Blaster\",\n    \"type\": \"RM 3\",\n    \"address\": \"192.168.1.2\",\n    \"port\": 80,\n    \"mac\": \"AA:BB:CC:DD:EE:FF\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Blaster",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Blaster",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Main Blaster\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blaster",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "678dfe51-850a-4080-931b-5bd27d502f6a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bfa1b496-d0f3-4b93-93fb-56df7b072837",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Devices",
+			"item": [
+				{
+					"name": "Read Blaster's Devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Blaster's Device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Basement Projector\",\n    \"type\": \"PROJECTOR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Blaster's Device",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Blaster's Device",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Basement Wall Projector\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blaster's Device",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "554ec7a9-92ea-4e71-af2e-b3088950bd38",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "a93009f1-fe94-4f3a-b4b6-40629959338b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Commands",
+			"item": [
+				{
+					"name": "Read Blaster's Device's Commands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/commands/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								"commands",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Blaster's Device's Command",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"command\": \"power on\",\n    \"repeat\": 0,\n    \"delay\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/commands/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								"commands",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Blaster's Device's Command",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/commands/power on/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								"commands",
+								"power on",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Blaster's Device's Command",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"repeat\": 1,\n    \"delay\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/commands/power on/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								"commands",
+								"power on",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blaster's Device's Command",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/commands/power on/",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								"commands",
+								"power on",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0df749c6-c3b8-48bb-9cd9-fb4cc7d1c7cd",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "426ccb20-1d07-4053-9d95-fdb4e28c01bb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Emit",
+			"item": [
+				{
+					"name": "Execute Blaster's Device's Command",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/commands/power on/emit",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								"commands",
+								"power on",
+								"emit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Execute Blaster's Device's Command",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{protocol}}://{{base_url}}:{{port}}/blasters/pMtEfSYMmg/devices/GZFnCHSDM/commands/power on/emit",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"blasters",
+								"pMtEfSYMmg",
+								"devices",
+								"GZFnCHSDM",
+								"commands",
+								"power on",
+								"emit"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0854c76c-44a8-486b-971a-65847bb88e06",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "03ea4105-8002-424d-9d45-ec37e8d871ef",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "<insert-API-token-here>",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "bdd90041-dea9-4c3c-91e1-73534a909f23",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "898b8976-d593-4343-a357-e10b1e952e5e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "cbc813ef-6e7b-474b-a26a-31c4bac47085",
+			"key": "base_url",
+			"value": "127.0.0.1",
+			"type": "string"
+		},
+		{
+			"id": "8eaa15dd-6bad-4eaf-8ace-1183eecc13e7",
+			"key": "port",
+			"value": "3000",
+			"type": "string"
+		},
+		{
+			"id": "8e82cffb-e597-4564-8a75-6d8696f34be9",
+			"key": "protocol",
+			"value": "http",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
