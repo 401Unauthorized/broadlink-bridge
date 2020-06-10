@@ -17,7 +17,7 @@
   </a>
   <a href="https://paypal.me/stephenmendez401" target="_blank">
     <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal" />
-</a>
+  </a>
 </p>
 
 ## 💾 Installation
@@ -810,3 +810,5 @@ This project is [MIT](https://github.com/401unauthorized/broadlink-bridge/blob/m
 BroadLink is a registered trademark of Hangzhou BroadLink Technology Co. Ltd
 
 _Part of this README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+
+<img src="https://broadlink-bridge.goatcounter.com/count?p=/test-img">
