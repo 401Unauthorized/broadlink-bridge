@@ -30,8 +30,8 @@ class BroadlinkService {
     createBlaster(obj) {
         const blaster = { 'id': shortid(), 'devices': [], ...obj, active: false };
         this.db.get('blasters').find({ id: blaster.id }).assign(blaster).value();
-        const { address, port, mac } = blaster;
-        this.broadlink.addDevice({ address, port }, mac, 0x5f36); // TODO: Make Type Dynamic
+        const { address, port, mac, type } = blaster;
+        this.broadlink.addDevice({ address, port }, mac, Number(type).toString(16) || 0x5f36);
         return { blaster, broadlinkBlaster: this.blasterToBroadlink(blaster) };
     }
 

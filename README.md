@@ -202,7 +202,7 @@ A BroadLink IR Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",
@@ -215,7 +215,7 @@ A BroadLink IR Blaster
 
 **name:** A user entered blaster name
 
-**type:** A user entered blaster type (not used)
+**type:** A user entered [blaster identifier](https://github.com/401Unauthorized/broadlinkjs-rm/blob/master/index.js#L8)
 
 **address:** LAN IP address for the blaster
 
@@ -277,7 +277,7 @@ IR Codes & Metadata
     {
       "id": "pMtEfSYMmg",
       "name": "Basement Blaster",
-      "type": "RM Mini3",
+      "type": "148340",
       "address": "192.168.1.2",
       "port": 80,
       "mac": "AA:BB:CC:DD:EE:FF",
@@ -397,7 +397,7 @@ Read all Blasters
   {
     "id": "pMtEfSYMmg",
     "name": "Basement Blaster",
-    "type": "RM Mini3",
+    "type": "148340",
     "address": "192.168.1.2",
     "port": 80,
     "mac": "AA:BB:CC:DD:EE:FF",
@@ -409,14 +409,20 @@ Read all Blasters
 
 #### POST /blasters/
 
-Create a new Blaster
+Create a new Blaster.
+
+Blaster *type* can be derived through the following:
+1. Check this list of [blaster identifiers](https://github.com/401Unauthorized/broadlinkjs-rm/blob/master/index.js#L8) and find the name of your product
+2. Copy what is inside of the `[]` for the line with your product name
+3. Run `node -e 'console.log(<paste-here>)'`
+4. The resulting number is what to put for the `type` field in the JSON body
 
 > Request (Body)
 
 ```JSON
 {
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF"
@@ -429,7 +435,7 @@ Create a new Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",
@@ -452,7 +458,7 @@ Read a specific Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",
@@ -479,7 +485,7 @@ Update a specific Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster Updated",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",
