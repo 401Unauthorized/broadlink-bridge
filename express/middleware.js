@@ -11,7 +11,7 @@ const corsSettings = {
 };
 
 module.exports.middleware = function (app, express) {
-    morgan.token('apikey', (req, res) => req.user.token);
+    morgan.token('apikey', (req, res) => req.user && (req.user.token));
     app.use(morgan(':date[iso] :method :url :status :response-time ms :user-agent token=:apikey'));
     app.use(cors(corsSettings));
     app.use(express.json());

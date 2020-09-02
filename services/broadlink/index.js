@@ -30,8 +30,8 @@ class BroadlinkService {
     createBlaster(obj) {
         const blaster = { 'id': shortid(), 'devices': [], ...obj, active: false };
         this.db.get('blasters').find({ id: blaster.id }).assign(blaster).value();
-        const { address, port, mac } = blaster;
-        this.broadlink.addDevice({ address, port }, mac, 0x5f36); // TODO: Make Type Dynamic
+        const { address, port, mac, type } = blaster;
+        this.broadlink.addDevice({ address, port }, mac, Number(type).toString(16) || 0x5f36);
         return { blaster, broadlinkBlaster: this.blasterToBroadlink(blaster) };
     }
 
@@ -74,9 +74,21 @@ class BroadlinkService {
         if (!broadlinkDevice)
             throw new Error(`Missing Broadlink Blaster: ${JSON.stringify(blaster)} ${JSON.stringify(broadlinkDevice)}`);
 
-        broadlinkDevice.sendData(Buffer.from(command.data, 'hex'));
-    }
+        const data = Buffer.from(command.data, 'hex');
+        broadlinkDevice.sendData(data);
 
+        if (command.repeat) {
+            let repeatsRemaining = command.repeat;
+
+            const sendDataInterval = setInterval(() => {
+                repeatsRemaining -= 1;
+                broadlinkDevice.sendData(data);
+                if(repeatsRemaining <= 0){
+                    clearInterval(sendDataInterval);
+                }
+            }, command.delay);
+        }
+    }
 }
 
 module.exports = BroadlinkService;

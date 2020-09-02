@@ -1,7 +1,7 @@
 <h1 align="center">BroadLink Bridge</h1>
 <h3 align="center">An HTTP REST Bridge for Interacting with BroadLink IR Devices</h3>
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-%3E%3D8.17.0-blue.svg" />
   <a href="https://github.com/401unauthorized/broadlink-bridge#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -51,8 +51,8 @@ Run the CLI command to start the server:
 - Use a GET/POST request without headers or a body to trigger IR commands (you know, to bookmark a URL to quickly turn on the TV)
 - Multiple authentication options (bearer token and query string token)
 - JSON formatted database file powered by [Lowdb](https://github.com/typicode/lowdb/blob/master/README.md) and [Lodash](https://lodash.com) enabling effortless modification, backup and sharing opportunities
-- An accompanying [SmartThings](https://docs.smartthings.com/en/latest/device-type-developers-guide/quick-start.html) Device Handler example (Well, It's Coming Soon...)
-- And a free "quick start" Postman Collection and example database!
+- An accompanying [SmartThings](https://docs.smartthings.com/en/latest/device-type-developers-guide/quick-start.html) sample [Device Handler](https://github.com/401unauthorized/broadlink-bridge/blob/master/resources/smartthings_device_handler.groovy)  
+- And a free "quick start" [Postman Collection](https://github.com/401unauthorized/broadlink-bridge/blob/master/config)  and example database!
 
 ## 👓 Transparency
 
@@ -202,7 +202,7 @@ A BroadLink IR Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",
@@ -215,7 +215,7 @@ A BroadLink IR Blaster
 
 **name:** A user entered blaster name
 
-**type:** A user entered blaster type (not used)
+**type:** A user entered [blaster identifier](https://github.com/401Unauthorized/broadlinkjs-rm/blob/master/index.js#L8)
 
 **address:** LAN IP address for the blaster
 
@@ -277,7 +277,7 @@ IR Codes & Metadata
     {
       "id": "pMtEfSYMmg",
       "name": "Basement Blaster",
-      "type": "RM Mini3",
+      "type": "148340",
       "address": "192.168.1.2",
       "port": 80,
       "mac": "AA:BB:CC:DD:EE:FF",
@@ -350,7 +350,7 @@ IR Codes & Metadata
 
 ```JSON
 {
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
 ```
 
@@ -397,7 +397,7 @@ Read all Blasters
   {
     "id": "pMtEfSYMmg",
     "name": "Basement Blaster",
-    "type": "RM Mini3",
+    "type": "148340",
     "address": "192.168.1.2",
     "port": 80,
     "mac": "AA:BB:CC:DD:EE:FF",
@@ -409,14 +409,20 @@ Read all Blasters
 
 #### POST /blasters/
 
-Create a new Blaster
+Create a new Blaster.
+
+Blaster *type* can be derived through the following:
+1. Check this list of [blaster identifiers](https://github.com/401Unauthorized/broadlinkjs-rm/blob/master/index.js#L8) and find the name of your product
+2. Copy what is inside of the `[]` for the line with your product name
+3. Run `node -e 'console.log(<paste-here>)'`
+4. The resulting number is what to put for the `type` field in the JSON body
 
 > Request (Body)
 
 ```JSON
 {
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF"
@@ -429,7 +435,7 @@ Create a new Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",
@@ -452,7 +458,7 @@ Read a specific Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",
@@ -479,7 +485,7 @@ Update a specific Blaster
 {
   "id": "pMtEfSYMmg",
   "name": "Basement Blaster Updated",
-  "type": "RM Mini3",
+  "type": "148340",
   "address": "192.168.1.2",
   "port": 80,
   "mac": "AA:BB:CC:DD:EE:FF",

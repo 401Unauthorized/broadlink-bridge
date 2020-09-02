@@ -150,7 +150,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Test Blaster\",\n    \"type\": \"RM 3\",\n    \"address\": \"192.168.1.2\",\n    \"port\": 80,\n    \"mac\": \"AA:BB:CC:DD:EE:FF\"\n}",
+							"raw": "{\n    \"name\": \"Test Blaster\",\n    \"type\": \"148340\",\n    \"address\": \"192.168.1.2\",\n    \"port\": 80,\n    \"mac\": \"AA:BB:CC:DD:EE:FF\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
