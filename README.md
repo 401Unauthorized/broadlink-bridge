@@ -1,7 +1,7 @@
 <h1 align="center">BroadLink Bridge</h1>
 <h3 align="center">An HTTP REST Bridge for Interacting with BroadLink IR Devices</h3>
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-%3E%3D8.17.0-blue.svg" />
   <a href="https://github.com/401unauthorized/broadlink-bridge#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -350,7 +350,7 @@ IR Codes & Metadata
 
 ```JSON
 {
-  "version": "1.0.0"
+  "version": "1.1.0"
 }
 ```
 

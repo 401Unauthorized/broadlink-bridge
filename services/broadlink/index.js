@@ -74,9 +74,21 @@ class BroadlinkService {
         if (!broadlinkDevice)
             throw new Error(`Missing Broadlink Blaster: ${JSON.stringify(blaster)} ${JSON.stringify(broadlinkDevice)}`);
 
-        broadlinkDevice.sendData(Buffer.from(command.data, 'hex'));
-    }
+        const data = Buffer.from(command.data, 'hex');
+        broadlinkDevice.sendData(data);
 
+        if (command.repeat) {
+            let repeatsRemaining = command.repeat;
+
+            const sendDataInterval = setInterval(() => {
+                repeatsRemaining -= 1;
+                broadlinkDevice.sendData(data);
+                if(repeatsRemaining <= 0){
+                    clearInterval(sendDataInterval);
+                }
+            }, command.delay);
+        }
+    }
 }
 
 module.exports = BroadlinkService;
