@@ -51,8 +51,8 @@ Run the CLI command to start the server:
 - Use a GET/POST request without headers or a body to trigger IR commands (you know, to bookmark a URL to quickly turn on the TV)
 - Multiple authentication options (bearer token and query string token)
 - JSON formatted database file powered by [Lowdb](https://github.com/typicode/lowdb/blob/master/README.md) and [Lodash](https://lodash.com) enabling effortless modification, backup and sharing opportunities
-- An accompanying [SmartThings](https://docs.smartthings.com/en/latest/device-type-developers-guide/quick-start.html) Device Handler example (Well, It's Coming Soon...)
-- And a free "quick start" Postman Collection and example database!
+- An accompanying [SmartThings](https://docs.smartthings.com/en/latest/device-type-developers-guide/quick-start.html) sample [Device Handler](https://github.com/401unauthorized/broadlink-bridge/blob/master/resources/smartthings_device_handler.groovy)  
+- And a free "quick start" [Postman Collection](https://github.com/401unauthorized/broadlink-bridge/blob/master/config)  and example database!
 
 ## 👓 Transparency
 
