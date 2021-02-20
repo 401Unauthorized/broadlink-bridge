@@ -1,7 +1,7 @@
 {
   "name": "broadlink-bridge",
   "description": "An HTTP REST Bridge for BroadLink IR Devices",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "keywords": [
     "REST",

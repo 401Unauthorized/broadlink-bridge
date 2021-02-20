@@ -1,7 +1,7 @@
 <h1 align="center">BroadLink Bridge</h1>
 <h3 align="center">An HTTP REST Bridge for Interacting with BroadLink IR Devices</h3>
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1.1-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-%3E%3D8.17.0-blue.svg" />
   <a href="https://github.com/401unauthorized/broadlink-bridge#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -24,6 +24,8 @@
 
 This is a [Node.js](https://nodejs.org/en/) module available through the
 [npm registry](https://www.npmjs.com/).
+
+> There is also an unaffiliated similar project written in Python [lbschenkel/broadlink-bridge](https://github.com/lbschenkel/broadlink-bridge)
 
 Global installation using the following
 [command](https://docs.npmjs.com/downloading-and-installing-packages-globally) is recommended:
@@ -350,7 +352,7 @@ IR Codes & Metadata
 
 ```JSON
 {
-  "version": "1.1.0"
+  "version": "1.1.1"
 }
 ```
 
