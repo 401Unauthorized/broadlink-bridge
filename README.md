@@ -1,7 +1,7 @@
 <h1 align="center">BroadLink Bridge</h1>
 <h3 align="center">An HTTP REST Bridge for Interacting with BroadLink IR Devices</h3>
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.1.1-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.2.0-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-%3E%3D8.17.0-blue.svg" />
   <a href="https://github.com/401unauthorized/broadlink-bridge#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -25,8 +25,6 @@
 This is a [Node.js](https://nodejs.org/en/) module available through the
 [npm registry](https://www.npmjs.com/).
 
-> There is also an unaffiliated similar project written in Python [lbschenkel/broadlink-bridge](https://github.com/lbschenkel/broadlink-bridge)
-
 Global installation using the following
 [command](https://docs.npmjs.com/downloading-and-installing-packages-globally) is recommended:
 
@@ -36,15 +34,17 @@ Alternatively, the repo can be cloned and linked instead:
 
 `$ git clone https://github.com/401unauthorized/broadlink-bridge.git && cd broadlink-bridge && npm i && npm link`
 
+> There is an unaffiliated similar project written in Python [lbschenkel/broadlink-bridge](https://github.com/lbschenkel/broadlink-bridge)
+
 ## 🔌 Quick Start
 
 Run the CLI command to start the server:
 
-`$ broadlink-bridge start -p <port> -t <uuid-based-token>,<uuid-based-token>,...`
+`$ broadlink-bridge start -p <port> -t <api-token>,<api-token>,...`
 
-> `-p <port>` sets the port
+> `-p <port>` sets the port to server will listen on.
 
-> `-t <uuid-based-token>,...` comma separated list of user created API tokens
+> `-t <api-token>,...` comma separated list of [API tokens](#api-credentials) 
 
 ## 🔮 Features
 
@@ -60,7 +60,7 @@ Run the CLI command to start the server:
 
 - This is a personal project and will only be maintained as needed (unless there is community interest)
 - You may have noticed there are no tests of any type. This may or may not change in the future. A TDD approach without the T.
-- Additional BroadLink devices may be compatible but this was only developed for the Broadlink RM Mini3
+- Additional BroadLink devices may be compatible but this was only tested with the Broadlink RM Mini3 & RM4 devices
 - Should not be considered "production ready", used in critical implementations or the API exposed publicly
 - Additional [security concerns & known vulnerabilities](https://github.com/401unauthorized/broadlink-bridge/blob/master/SECURITY.md) should be reviewed and acknowledged prior to running the server
 
@@ -76,15 +76,17 @@ Run the CLI command to start the server:
 
 ### Connect a Blaster
 
-> Please note, the following was only tested with the RM mini3
-
 Connecting a new BroadLink device on your local wireless network:
 
 1. Put the device into AP Mode (reference device manual)
     1. Long press the reset button until the blue LED is blinking quickly
     2. Long press again until blue LED is blinking slowly
 2. Manually connect your computer to the WiFi SSID named _BroadlinkProv_
-3. Use the CLI to provide your wifi name (SSID), wifi password, and the security mode number to the device:
+3. Use the CLI to provide your wifi name (SSID), wifi password and the security mode number to the device
+4. It is recommended to monitor your router's UI/app to see if/when the device connects to your network
+5. Write down the device's IP address, MAC address and possibly set a [Static IP](https://www.lifewire.com/what-is-a-static-ip-address-2626012) for the device as well
+
+#### Security Mode Number
 
 | Number | Security    |
 | ------ | ----------- |
@@ -93,6 +95,8 @@ Connecting a new BroadLink device on your local wireless network:
 | 2      | WPA1        |
 | 3      | WPA2        |
 | 4      | WPA1/2      |
+
+#### CLI Command
 
 `$ broadlink-bridge connect -w wifi_name -p wifi_password -s 3`
 
@@ -110,7 +114,8 @@ To locate configuration and data files on your machine, run the following:
   "db-example.json": "/path/to/db-example.json",
   ".env": "/path/to/.env",
   "postman-bearer-token": "/path/to/broadlink-bridge_bearer_auth.postman_collection.json",
-  "postman-query-string": "/path/to/broadlink-bridge_query_string_auth.postman_collection.json"
+  "postman-query-string": "/path/to/broadlink-bridge_query_string_auth.postman_collection.json",
+  "broadlinkjs-rm": "0.8.0"
 }
 ```
 
@@ -157,21 +162,25 @@ This [postman collection](https://www.postman.com/downloads/) provides **example
 
 ### API Credentials
 
-API tokens are **required** with most endpoints and may be defined in the following ways:
+An authentication token is **required** with most API endpoints
+
+Tokens are to be manually created and can be as simple as "12345" or as complex as "b070a872-c094-42e6-8f08-a8370a3dba96"
+
+They may be defined in the following ways:
 
 > Passed in as an argument
 
-`$ broadlink-bridge start -t <uuid-based-token>,<uuid-based-token>,...`
+`$ broadlink-bridge start -t <api-token>,<api-token>,...`
 
 > Defined in the `.env` file
 
-`TOKENS=<uuid-based-token>,<uuid-based-token>,...`
+`TOKENS=<api-token>,<api-token>,...`
 
 ### Running the Server
 
 Run the CLI command to start the server:
 
-`$ broadlink-bridge start -p <port> -t <uuid-based-token>,<uuid-based-token>,...`
+`$ broadlink-bridge start -p <port> -t <api-token>,<api-token>,...`
 
 For a full list of commands, enter the following:
 
@@ -352,7 +361,7 @@ IR Codes & Metadata
 
 ```JSON
 {
-  "version": "1.1.1"
+  "version": "1.2.0"
 }
 ```
 
