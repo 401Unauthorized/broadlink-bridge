@@ -1,7 +1,7 @@
 {
   "name": "broadlink-bridge",
   "description": "An HTTP REST Bridge for BroadLink IR Devices",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": false,
   "keywords": [
     "REST",
@@ -29,7 +29,7 @@
     "broadlink-bridge": "bin/broadlink-bridge"
   },
   "dependencies": {
-    "broadlinkjs-rm": "git+https://github.com/401Unauthorized/broadlinkjs-rm.git",
+    "broadlinkjs-rm": "github:401Unauthorized/broadlinkjs-rm#kiwi-cam-master",
     "commander": "^6.1.0",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",

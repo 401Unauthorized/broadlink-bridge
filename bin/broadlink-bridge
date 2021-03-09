@@ -44,12 +44,14 @@ program
     .command('files')
     .description('Prints All Important File Paths')
     .action(() => {
+        const { version } = require(resolve('node_modules/broadlinkjs-rm/package'));
         const response = {
             'db.json': resolve('models/lowdb/db.json'),
             'db-example.json': resolve('models/lowdb/db-example.json'),
             '.env': resolve('.env'),
             'postman-bearer-token': resolve('config/broadlink-bridge_bearer_auth.postman_collection.json'),
-            'postman-query-string': resolve('config/broadlink-bridge_query_string_auth.postman_collection.json')
+            'postman-query-string': resolve('config/broadlink-bridge_query_string_auth.postman_collection.json'),
+            'broadlinkjs-rm': version
         };
         console.log(JSON.stringify(response, null, ' '));
     });
